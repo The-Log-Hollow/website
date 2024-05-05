@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Log Hollow Incident</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      color: #eee;
+      background-color: #000;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, #000, #111, #000);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 0;
+      background-image: url('https://via.placeholder.com/1500x800');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    header {
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      color: #ff4545;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #bbb;
+    }
+
+    .parallax {
+      padding: 50px;
+      text-align: center;
+      margin-top: -50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about {
+      padding: 30px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.9);
+      border-radius: 10px;
+      margin: 50px auto;
+      max-width: 800px;
+      position: relative;
+      box-shadow: 0 0 20px rgba(255, 69, 69, 0.5);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .about:hover {
+      transform: translateY(-10px);
+    }
+
+    .about h2 {
+      color: #ff4545;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .about p {
+      color: #ddd;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .button {
+      background-color: #ff4545;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(255, 69, 69, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin: 0 10px;
+    }
+
+    .button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(255, 69, 69, 0.7);
+    }
+
+    .fab-icon {
+      font-size: 2rem;
+      color: #ff4545;
+      margin-right: 10px;
+    }
+
+    .page-effect {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .trailer {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .trailer.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .trailer iframe {
+      width: 80%;
+      height: 80%;
+    }
+
+    .trailer button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(255, 69, 69, 0.8);
+      border: none;
+      padding: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 5px;
+      box-shadow: none;
+    }
+
+    .trailer button:hover {
+      background-color: rgba(255, 69, 69, 1);
+    }
+
+    .social-icons {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .social-icons a {
+      color: #fff;
+      font-size: 24px;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .social-icons a:hover {
+      color: #ff4545;
+    }
+
+    @media screen and (max-width: 768px) {
+      header {
+        padding: 30px 0;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .trailer iframe {
+        width: 90%;
+        height: 60%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="hero">
+    <div class="hero-overlay"></div>
+    <header>
+      <h1>The Log Hollow Incident</h1>
+      <p class="subtitle">A first-person horror game set in the Pacific Northwest</p>
+    </header>
+  </div>
+
+  <section class="parallax page-effect">
+    <div class="about">
+      <h2>About the Game</h2>
+      <p>"The Log Hollow Incident" is a spine-chilling adventure that puts players in the shoes of a truck driver trapped in a demonic logging site in the heart of the Pacific Northwest forest.</p>
+      <p>As night falls, the forest comes alive with supernatural horrors, and players must navigate their semi-truck through the darkness while uncovering the dark secrets of Log Hollow.</p>
+      <h2>Storyline</h2>
+      <p><strong>Prologue:</strong> You play as Jack Marlow, a seasoned truck driver known for his daring exploits and fearless demeanor. One fateful night, Jack accepts a seemingly routine delivery job to transport a shipment of lumber deep into the heart of the Pacific Northwest forest. Little does he know, this journey will plunge him into a nightmare from which there may be no escape.</p>
+      <p><strong>Act 1: The Arrival:</strong> As Jack navigates his semi-truck along the winding roads leading to Log Hollow, he notices an ominous fog descending, shrouding the forest in an eerie gloom. Despite his instincts warning him to turn back, Jack presses on, driven by the promise of a hefty payday. Upon reaching his destination, he finds the logging site abandoned, with no sign of the crew or the cargo he's meant to pick up. As he explores the desolate camp, strange symbols etched into the trees and the ground catch his eye, hinting at a dark presence lurking in the shadows.</p>
+      <p><strong>Act 2: The Haunting Begins:</strong> Night falls, and with it comes a palpable sense of dread. Strange noises echo through the trees, and Jack's truck inexplicably refuses to start. Trapped in the heart of Log Hollow, Jack must unravel the mystery of the abandoned logging site while evading the malevolent forces that stalk the darkness. As he delves deeper into the forest, he discovers clues left behind by the missing loggers, each one painting a more chilling picture of the horrors that befell them.</p>
+      <p><strong>Act 3: Confronting the Darkness:</strong> Armed only with his wits and whatever tools he can scavenge, Jack must confront the source of the evil that has consumed Log Hollow. Along the way, he encounters otherworldly entities and spectral apparitions, each more terrifying than the last. To survive, Jack must solve cryptic puzzles, uncover hidden passages, and outmaneuver the demonic forces that seek to claim him. But as he edges closer to the truth, he realizes that some secrets are best left buried, and that escaping Log Hollow may come at a price he's unwilling to pay.</p>
+      <p><strong>Epilogue:</strong> In the end, Jack's fate remains uncertain. Whether he emerges from the depths of Log Hollow as a triumphant survivor or succumbs to the darkness that lurks within is a mystery that only the forest itself can answer. But one thing is certain: the legend of the Log Hollow Incident will endure for generations to come, a cautionary tale of the perils that await those who dare to venture too far into the unknown.</p>
+      <div class="button-container">
+        <button class="button" onclick="showTrailer()">Watch Trailer</button>
+        <button class="button">Learn More</button>
+      </div>
+    </div>
+  </section>
+  
+  <section class="trailer" id="trailer">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="hideTrailer()">Close Trailer</button>
+  </section>
+
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-tiktok"></i></a>
+    <a href="#"><i class="fab fa-discord"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+  </div>
+  
+  <script>
+    function showTrailer() {
+      document.getElementById('trailer').classList.add('show');
+    }
+
+    function hideTrailer() {
+      document.getElementById('trailer').classList.remove('show');
+    }
+  </script>
+</body>
+</html>
